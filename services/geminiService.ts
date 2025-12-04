@@ -4,7 +4,8 @@ import { GoogleGenAI } from "@google/genai";
 import { StockData } from "../types";
 
 // Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// 改用 import.meta.env 讀取，並使用正確的變數名稱 VITE_GEMINI_API_KEY
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 export const analyzeStock = async (stockCode: string): Promise<StockData> => {
   const modelId = "gemini-2.5-flash";
